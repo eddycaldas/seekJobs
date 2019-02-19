@@ -4,6 +4,7 @@ import {StyleSheet, View} from 'react-native';
 
 import PlaceInput from './src/components/PlaceInput/PlaceInput';
 import PlaceList from './src/components/PlaceList/PlaceList';
+import placeList from './src/components/PlaceList/PlaceList';
 
 export default class App extends Component {
   state = {
@@ -13,16 +14,16 @@ export default class App extends Component {
   workerAddedHandler = workerName => {
     this.setState(prevState => {
       return {
-        names: prevState.names.concat(workerName)
+        names: prevState.names.concat({key: Math.random(), value:workerName})
       }
     })
   }
 
-  nameDeletedHandler = (index) => {
+  nameDeletedHandler = (key) => {
     this.setState(prevState => {
       return {
-        names: prevState.names.filter((name, i) => {
-          return i !== index
+        names: prevState.names.filter(name => {
+          return name.key !== key
         })
       }
     })
