@@ -7,7 +7,7 @@ const placeList = props => {
     const namesOutput = props.names.map((name, i) => (
         <ListItem 
           key={i} 
-          onItemPressed={() => alert('pressed ' + i)}
+          onItemPressed={() => props.onItemDeleted(i)}
           workerName={name}/>
       ))
       return (

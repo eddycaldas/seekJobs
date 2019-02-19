@@ -18,11 +18,24 @@ export default class App extends Component {
     })
   }
 
+  nameDeletedHandler = (index) => {
+    this.setState(prevState => {
+      return {
+        names: prevState.names.filter((name, i) => {
+          return i !== index
+        })
+      }
+    })
+  }
+
   render() {
     return (
       <View style={styles.container}>
         <PlaceInput onWorkerAdded={this.workerAddedHandler}/>
-        <PlaceList names={this.state.names}/>
+        <PlaceList 
+          names={this.state.names}
+          onItemDeleted={this.nameDeletedHandler}
+        />
       </View>
     );
   }
